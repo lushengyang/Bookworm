@@ -1,4 +1,5 @@
 $.get('/ajax/index',function(d){
+    $(".loading").hide();
     $("#app").show();
     d =JSON.parse(d);
     var windowWidth = $(window).width();
@@ -25,7 +26,7 @@ $.get('/ajax/index',function(d){
             position:0,
             header_position:0,
             header_duration:0,
-            tab_1_class:true,
+            tab_1_class:true,   
             tab_2_class:false,
             loadOff:false
         },
