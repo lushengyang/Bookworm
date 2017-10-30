@@ -1,0 +1,17 @@
+<section>
+    <div class="channel-h5__header">
+        <p class="channle-h5__title">
+            精选专题<i>热</i>
+        </p>
+    </div>
+    <div class="channel-h5__bottom">
+        <ul class="channel-h5__bottom_banners">
+            <li v-for="(item,index) in bottom" v-if="index>=0&&index<2">
+                <div class="channel-h5__bottom_cover">
+                    <img class="cover" alt="{{ item.id}}" v-bind:src="item.ad_pic_url">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <a class="channel-group__footer" href="/free">更多精彩专题&gt;&gt;</a>
+</section>

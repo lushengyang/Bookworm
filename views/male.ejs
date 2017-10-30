@@ -1,0 +1,146 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scale=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <title>书籍详情</title>
+    <style>
+        .channel-group__header {
+            position: relative;
+            padding: 10px 14px;
+            border-bottom: 1px solid #f0f0f0;
+            border-left: 6px solid #ffab18;
+        }
+        .channel-group__title {
+            font-size: 16px;
+            font-weight: normal;
+            color: #333;
+        }
+        .warp{
+            float: right;
+        }
+        .warp .book-tag{
+            float: right;
+            border: 1px solid #ddd;
+            margin: .2rem -3px 0 0;
+            border-radius: 3px;
+            line-height: 1;
+            padding: 2px;
+            -webkit-transform: scale(.8);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 6em;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" style=" overflow:hidden;" v-bind:style="{width:screen_width+'px'}">
+        <% include include/commend-header.html %>
+        <div class="container-scroll scroll-top" v-bind:style="{width:screen_width+'px'}" style="display:none">
+            <section class="channel-group main-card">
+                <div class="channel-group__header">
+                    <h2 class="channel-group__title channel-group__title_left">{{ ad[0].ad_name }}</h2>
+                </div>
+                <ul class="list-h5">
+                    <li v-for="(book,index) in ad[0].data.data">
+                        <div class="book-h5" v-bind:data-href="book.fiction_id" v-on:click = "doBook($event)">
+                            <div class="book-h5__cover">
+                                <img v-bind:alt="ad[0].title" v-bind:src="book.cover">
+                                <p class="book-h5__finish">完结</p>
+                            </div>
+                            <div class="book-h5__info">
+                                <p class="book-h5__title">{{ book.title }}</p>
+                                <p class="book-h5__summary">{{ book.summary }}</p>
+                                <p class="book-h5__auther">{{ book.authors }}</p>
+                            </div>
+                            <div class="warp" v-for="(tag,index) in book.tags">
+                                <div class="book-tag">{{ tag }}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a class="channel-group__footer">查看更多&gt;&gt;</a>
+            </section>
+            <section class="channel-group main-card">
+                <div class="channel-group__header">
+                    <h2 class="channel-group__title channel-group__title_left">{{ ad[1].ad_name }}</h2>
+                </div>
+                <ul class="list-h5">
+                    <li v-for="(book,index) in ad[1].data.data">
+                        <div class="book-h5" v-bind:data-href="book.fiction_id" v-on:click = "doBook($event)">
+                            <div class="book-h5__cover">
+                                <img v-bind:alt="ad[1].title" v-bind:src="book.cover">
+                                <p class="book-h5__finish">完结</p>
+                            </div>
+                            <div class="book-h5__info">
+                                <p class="book-h5__title">{{ book.title }}</p>
+                                <p class="book-h5__summary">{{ book.summary }}</p>
+                                <p class="book-h5__auther">{{ book.authors }}</p>
+                            </div>
+                            <div class="warp" v-for="(tag,index) in book.tags">
+                                <div class="book-tag">{{ tag }}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a class="channel-group__footer">更多主编推荐&gt;&gt;</a>
+            </section>
+            <section class="channel-group main-card">
+                <div class="channel-group__header">
+                    <h2 class="channel-group__title channel-group__title_left">{{ ad[2].ad_name }}</h2>
+                </div>
+                <ul class="list-h5">
+                    <li v-for="(book,index) in ad[2].data.data">
+                        <div class="book-h5" v-bind:data-href="book.fiction_id" v-on:click = "doBook($event)">
+                            <div class="book-h5__cover">
+                                <img v-bind:alt="ad[2].title" v-bind:src="book.cover">
+                                <p class="book-h5__finish">完结</p>
+                            </div>
+                            <div class="book-h5__info">
+                                <p class="book-h5__title">{{ book.title }}</p>
+                                <p class="book-h5__summary">{{ book.summary }}</p>
+                                <p class="book-h5__auther">{{ book.authors }}</p>
+                            </div>
+                            <div class="warp" v-for="(tag,index) in book.tags">
+                                <div class="book-tag">{{ tag }}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a class="channel-group__footer">更多新书抢鲜读&gt;&gt;</a>
+            </section>
+            <section class="channel-group main-card">
+                <div class="channel-group__header">
+                    <h2 class="channel-group__title channel-group__title_left">{{ ad[3].ad_name }}</h2>
+                </div>
+                <ul class="list-h5">
+                    <li v-for="(book,index) in ad[3].data.data">
+                        <div class="book-h5" v-bind:data-href="book.fiction_id" v-on:click = "doBook($event)">
+                            <div class="book-h5__cover">
+                                <img v-bind:alt="ad[3].title" v-bind:src="book.cover">
+                                <p class="book-h5__finish">完结</p>
+                            </div>
+                            <div class="book-h5__info">
+                                <p class="book-h5__title">{{ book.title }}</p>
+                                <p class="book-h5__summary">{{ book.summary }}</p>
+                                <p class="book-h5__auther">{{ book.authors }}</p>
+                            </div>
+                            <div class="warp" v-for="(tag,index) in book.tags">
+                                <div class="book-tag">{{ tag }}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a class="channel-group__footer">更多完本精品&gt;&gt;</a>
+            </section>
+        </div>
+        <div class="loading" v-if="loadOff"></div>
+    </div>
+</body>
+<script src="/script/vue.min.js"></script>
+<script src="/script/zepto.js"></script>
+<script src="/script/pages/male.js"></script>
+</html>

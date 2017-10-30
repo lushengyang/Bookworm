@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scale=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <title></title>
+</head>
+<body>
+    <div id="app" style=" overflow:hidden;" v-bind:style="{width:screen_width+'px'}">
+        <div id="show" style="display:none;">
+            <div class="top">
+                <a href="/category" class="top__back"></a>
+                <span class="top__title">{{ tagData.cate.label }}</span>
+                <a href="/index" class="header-home"></a>
+            </div>
+            <div class="container-scroll scroll-top" v-bind:style="{width:screen_width+'px'}" @scroll = "scrollFn">
+                <section class="main-card">
+                    <ul class="filter-list">
+                        <li>
+                            <ul class="tag-list">
+                                <li class="tag -crt" v-bind:data-href = "tagData.cate.category_id" v-on:click = "doSelect($event)"> 全部 </li>
+                                <li class="tag" v-for="(tag,index) in tagData.cate.children"  v-bind:data-href = "tag.category_id" v-on:click = "doSelect($event)"> {{ tag.label }} </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="tag-list">
+                                <li class="tag -crt" data-list="click" v-on:click = "doSelect($event)"> 热门 </li>
+                                <li class="tag" data-list="latest" v-on:click = "doSelect($event)"> 最新 </li>
+                                <li class="tag" data-list="finshed" v-on:click = "doSelect($event)"> 完结 </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section class="main-card">
+                    <ul class="list-h5" v-for="(oneUl,index) in listData">
+                        <li v-for="(book,index) in oneUl.items">
+                            <div class="book-h5" v-bind:data-href="book.fiction_id" v-on:click="doBook($event)">
+                                <div class="book-h5__cover">
+                                    <img v-bind:alt="book.title" v-bind:src="book.cover">
+                                    <p class="book-h5__finish" v-if="book.finish">完结</p>
+                                    <p class="book-h5__finish" v-if="!book.finish">连载中</p>
+                                </div>
+                                <div class="book-h5__info">
+                                    <p class="book-h5__title">{{ book.title }}</p>
+                                    <p class="book-h5__summary">{{ book.summary }}</p>
+                                    <p class="book-h5__auther">{{ book.authors }}</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                <section class="main-card more-info" v-if="more__info">
+                        <p class="more-info">客官，对不起！没有更多了哦~</p>
+                </section>
+            </div>
+        </div>
+        <div class="loading" v-if="loadOff"></div>
+    </div>
+    <script src="/script/vue.min.js"></script>
+    <script src="/script/jquery-1.11.2.js"></script>
+    <script src="/script/jquery.jqURL.js"></script>
+    <script src="/script/pages/categoryDetail.js"></script>
+</body>
+
+</html>

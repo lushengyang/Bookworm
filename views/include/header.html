@@ -1,0 +1,8 @@
+<div class="header-tab" id="app_header">
+    <div class="Swipe-tab Swipe-tab_2 f-cb">
+        <a href="javascript:" v-on:click = "tabSwitch(0)"  v-bind:class="{ 'Swipe-tab__on':tab_1_class }">书城</a>
+        <a href="javascript:" v-on:click = "tabSwitch(1)"  v-bind:class="{ 'Swipe-tab__on':tab_2_class }">书架</a>
+        <i v-bind:style="{width:index_header_tab_width+'px',transitionDuration:header_duration+'s',transform:'translate3d('+header_position+'px,0px,0px)'}"></i>
+    </div>
+    <em class="header-user"  v-on:click="doInfo" ></em><em class="header-checkin"  v-on:click="doInfo"></em>
+</div>

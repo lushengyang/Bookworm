@@ -1,0 +1,178 @@
+var windowWidth = $(window).width();
+if(windowWidth<320){
+    windowWidth=320;
+}
+var screen_width =  windowWidth;
+var maleData = [
+        [
+            {
+                "name":"玄幻",
+                "num":22539,
+                "bgc":"/img/category/male/xuanhuan.jpg!m",
+                "href":"id=1000000"
+            },
+            {
+                "name":"奇幻",
+                "num":2518,
+                "bgc":"/img/category/male/qihuan.jpg!m",
+                "href":"#page=cate&type=fiction&id=2000000"
+            },
+            {
+                "name":"武侠",
+                "num":3584,
+                "bgc":"/img/category/male/wuxia.jpg!m",
+                "href":"#page=cate&type=fiction&id=3000000"
+            },
+            {
+                "name":"都市",
+                "num":51700,
+                "bgc":"/img/category/male/dushi.jpg!m",
+                "href":"#page=cate&type=fiction&id=4000000"
+            },
+            {
+                "name":"仙侠",
+                "num":7524,
+                "bgc":"/img/category/male/xianxia.jpg!m",
+                "href":"#page=cate&type=fiction&id=5000000"
+            },
+            {
+                "name":"历史",
+                "num":13535,
+                "bgc":"/img/category/male/lishi.jpg!m",
+                "href":"#page=cate&type=fiction&id=6000000"
+            },
+            {
+                "name":"军事",
+                "num":1512,
+                "bgc":"/img/category/male/junshi.jpg!m",
+                "href":"#page=cate&type=fiction&id=7000000"
+            },
+            {
+                "name":"灵异",
+                "num":6561,
+                "bgc":"/img/category/male/lingyi.jpg!m",
+                "href":"#page=cate&type=fiction&id=8000000"
+            },
+            {
+                "name":"科幻",
+                "num":4610,
+                "bgc":"/img/category/male/kehuan.jpg!m",
+                "href":"#page=cate&type=fiction&id=9000000"
+            },
+            {
+                "name":"游戏",
+                "num":13535,
+                "bgc":"/img/category/male/youxi.jpg!m",
+                "href":"#page=cate&type=fiction&id=10000000"
+            },
+            {
+                "name":"竞技",
+                "num":780,
+                "bgc":"/img/category/male/jingji.jpg!m",
+                "href":"#page=cate&type=fiction&id=11000000"
+            },
+            {
+                "name":"职场",
+                "num":7154,
+                "bgc":"/img/category/male/zhichang.jpg!m",
+                "href":"#page=cate&type=fiction&id=12000000"
+            },
+            {
+                "name":"同人",
+                "num":334,
+                "bgc":"/img/category/male/tongren.jpg!m",
+                "href":"#page=cate&type=fiction&id=13000000"
+            },
+            {
+                "name":"短篇",
+                "num":165,
+                "bgc":"/img/category/male/duanpian.jpg!m",
+                "href":"#page=cate&type=fiction&id=14000000"
+            }
+        ],
+        [
+            {
+                "name":"玄幻言情",
+                "num":4497,
+                "bgc":"/img/category/female/yanqing.jpg!m",
+                "href":"#page=cate&type=fiction&id=15000000"
+            },
+            {
+                "name":"仙侠奇缘",
+                "num":2300,
+                "bgc":"/img/category/female/xianxiaqiyuan.jpg!m",
+                "href":"#page=cate&type=fiction&id=16000000"
+            },
+            {
+                "name":"古代言情",
+                "num":37716,
+                "bgc":"/img/category/female/gudaiyanqing.jpg!m",
+                "href":"#page=cate&type=fiction&id=17000000"
+            },
+            {
+                "name":"现代言情",
+                "num":15689,
+                "bgc":"/img/category/female/xiandaiyanqing.jpg!m",
+                "href":"#page=cate&type=fiction&id=18000000"
+            },
+            {
+                "name":"浪漫青春",
+                "num":3766,
+                "bgc":"/img/category/female/langmanqingchun.jpg!m",
+                "href":"#page=cate&type=fiction&id=19000000"
+            },
+            {
+                "name":"科幻空间",
+                "num":1456,
+                "bgc":"/img/category/female/kehuankongjian.jpg!m",
+                "href":"#page=cate&type=fiction&id=20000000"
+            },
+            {
+                "name":"悬疑灵异",
+                "num":1363,
+                "bgc":"/img/category/female/xuanyilingyi.jpg!m",
+                "href":"#page=cate&type=fiction&id=21000000"
+            },
+            {
+                "name":"游戏竞技",
+                "num":817,
+                "bgc":"/img/category/female/youxijingji.jpg!m",
+                "href":"#page=cate&type=fiction&id=22000000"
+            },
+            {
+                "name":"同人小说",
+                "num":1425,
+                "bgc":"/img/category/female/tongrenxiaoshuo.jpg!m",
+                "href":"#page=cate&type=fiction&id=23000000"
+            },
+            {
+                "name":"耽美小说",
+                "num":68,
+                "bgc":"/img/category/female/tanmeixioashuo.jpg!m",
+                "href":"#page=cate&type=fiction&id=24000000"
+            }
+        ]
+]
+var menu1 = new Vue({
+    screen_width:windowWidth,
+    el:'#app',
+    data:{
+        maleData:maleData,
+        start:0,
+        count:10
+    },
+    methods:{
+        goCategoryDetails:function(event){
+            var _this = this;
+            var elem =  $(event.currentTarget)
+            var id = elem.attr("data-href");
+            location.href = "/category/detail?"+id+"&start=" + _this.start+"&count=" + _this.count;
+        }
+    }
+});
+//添加背景图片
+$(".u-cat-item").css({"background-image":"url("+$(this).attr("data-src")+")"});
+$(".u-cat-item").each(function(){
+    var src = $(this).attr("data-src");
+    $(this).css({"background-image":"url("+src+")"});
+})

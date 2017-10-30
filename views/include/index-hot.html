@@ -1,0 +1,19 @@
+<section class="channel-h5">
+    <div class="channel-h5__header">
+        <p class="channle-h5__title">
+            本周最火
+        </p>
+    </div>
+        <ul class="book-table">
+            <li class="channel-h5" v-for="(item,index) in hot" v-if="index>=0&&index<6"  v-bind:data-href="item.fiction_id" v-on:click = "doBook($event)">
+                <div class="u-book">
+                    <div class="book-cover">
+                        <img alt="{{ item.title }}" v-bind:src="item.cover">
+                    </div>
+                    <div class="info">
+                        <h3 class="title">{{ item.title }}</h3>
+                    </div>
+                </div>
+            </li>
+        </ul>
+</section>

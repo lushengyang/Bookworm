@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scale=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/all.css">
+    <title></title>
+</head>
+
+<body>
+    <div id="app" style=" overflow:hidden;" v-bind:style="{width:screen_width+'px'}">
+        <% include include/commend-header.html %>
+        <div class="container-scroll scroll-top" v-bind:style="{width:screen_width+'px'}">
+            <div class="new-page cate-page">
+                <div class="u-area">
+                    <section class="m-cat-male">
+                        <div class="u-ttl u-ttl-icn">
+                            <em class="icn-catagory1"></em>
+                            <h1>男生小说</h1>
+                        </div>
+                        <ul class="u-list-col f-cb">
+                            <li v-for="(item,index) in maleData[0]" v-bind:data-title="item.name">
+                                <div class="u-cat-item" v-bind:data-src="item.bgc" v-bind:data-href="item.href" v-on:click="goCategoryDetails($event)">
+                                    <h3>{{ item.name }}</h3>
+                                    <p class="num">{{ item.num }}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="m-cat-female">
+                        <div class="u-ttl u-ttl-icn">
+                            <em class="icn-catagory2"></em>
+                            <h1>女生小说</h1>
+                        </div>
+                        <ul class="u-list-col f-cb">
+                            <li v-for="(item,index) in maleData[1]" v-bind:data-href="item.href" v-bind:data-title="item.name">
+                                <div class="u-cat-item" v-bind:data-src="item.bgc" v-bind:data-href="item.href" v-on:click="goCategoryDetails($event)">
+                                    <h3>{{ item.name }}</h3>
+                                    <p class="num">{{ item.num }}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/script/vue.min.js"></script>
+    <script src="/script/zepto.js"></script>
+    <script src="/script/pages/catgory.js"></script>
+</body>
+
+</html>

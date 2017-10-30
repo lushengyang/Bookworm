@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/iconfont.css">
+    <style type="text/css">
+        html{
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        body{
+            text-align: left;
+            width: 100%;
+            overflow: hidden;
+            background: #e9dfc7;
+        }
+        /*内容样式*/
+        .m-read-content{
+            font-size: 14px;
+            color: #555555;
+            line-height: 31px;
+            padding: 15px;
+        }
+        .m-read-content h4{
+            font-size: 20px;
+            color: #736357;
+            border-bottom: 1px solid #736357;
+            letter-spacing: 2px;
+        }
+        .m-read-content p{
+            text-indent: 2em;
+            margin: 0.5em 0;
+            letter-spacing: 0px;
+            line-height: 24px;
+        }
+        /*切换章节按钮样式*/
+        .m-button-bar{
+            width: 70%;
+            max-width: 500px;
+            padding: 5px;
+            margin: 0 auto;
+        }
+        .u-tab{
+            height: 34px;
+            margin: 10px auto;
+            line-height: 34px;
+            border-radius: 8px;
+            border:1px solid #858382;
+            font-size: 12px;
+            background: #000;
+            opacity: .9;
+        }
+        .u-tab li{
+            display: inline-block;
+            width: 49%;
+            border-right: 1px solid #858382;
+            text-align: center;
+        }
+        .u-tab li:last-of-type{
+            border-right: none;
+        }
+        .u-tab a{
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            line-height: 100%;
+            color: #ffffff;
+        }
+        /*顶部返回书架*/
+        .top-nav{
+            position: fixed;
+            top: 0;
+            height: 50px;
+            width: 100%;
+            z-index: 9999;
+            background: #000;
+        }
+        .icon-back{
+            position: absolute;
+            top: 14px;
+            left: 10px;
+            width: 23px;
+            height: 23px;
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkJGMkEyQkQxMjdBNDExRTU4NjA2QTJDMjFDQ0I0ODhEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkJGMkEyQkQyMjdBNDExRTU4NjA2QTJDMjFDQ0I0ODhEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QkYyQTJCQ0YyN0E0MTFFNTg2MDZBMkMyMUNDQjQ4OEQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QkYyQTJCRDAyN0E0MTFFNTg2MDZBMkMyMUNDQjQ4OEQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4Ia560AAAHWklEQVR42uyd7W9U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");
+            background-size: 100% 100%;
+        }
+        .nav-title{
+            position: absolute;
+            top: 16px;
+            left: 42px;
+            color: #d5d5d6;
+        }
+        /*底部导航*/
+        .bottom-nav{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 9999;
+            background: rgba(0,0,0,.9);
+        }
+        .bottom-nav ul{
+            height: 100%;
+        }
+        .bottom-nav li{
+            display: inline-block;
+            position: relative;
+            height: 100%;
+            width: 32%;
+            text-align: center;
+        }
+        .bottom-nav i{
+            position: absolute;
+            top: 16px;
+            left: 0;
+            right: 0;
+            margin:auto;
+            width: 20px;
+            height: 20px;
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 20px;
+        }
+        .bottom-nav p{
+            position:absolute;
+            bottom: 14px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            color: #d9d9d8;
+            font-size: 12px;
+        }
+        /*字体和背景设置的样式*/
+        .nav-pannel-bg{
+            position: fixed;
+            bottom: 70px;
+            height: 135px;
+            width: 100%;
+            background: #000;
+            opacity: .9;
+            z-index: 10000;
+        }
+        .nav-pannel{
+            position: fixed;;
+            bottom: 70px;
+            height: 135px;
+            width: 100%;
+            background: none;
+            color: #ffffff;
+            z-index: 10002;
+        }
+        .child-mod{
+            padding: 5px 10px;
+            margin: 15px;
+        }
+        .child-mod span{
+            display: inline-block;
+            padding-right: 20px;
+            padding-left: 10px;
+        }
+        .child-mod button:last-of-type{
+            margin-left: 10px;
+        }
+        .font-size-button{
+            background: none;
+            border: 1px #8c8c8c solid;
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 5px 30px;
+        }
+        .bg-color-select{
+            display: inline-block;
+        }
+        .bg-container{
+            position: relative;
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+            border-radius: 15px;
+            display: inline-block;
+            vertical-align: -14px;
+        }
+        .bg-container:first-of-type{
+            background: #f7eee5;
+        }
+        .bg-container:nth-of-type(2){
+            background: #e9dfc7;
+        }
+        .bg-container:nth-of-type(3){
+            background: #a4a4a4;
+        }
+        .bg-container:nth-of-type(4){
+            background: #cdefce;
+        }
+        .bg-container:last-of-type{
+            background: #283548;
+        }
+        .bg-container-current{
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            border: 1px solid #ff7800;
+        }
+        .artical-action-md{
+            position: fixed;
+            z-index: 10001;
+            width: 100%;
+            height: 40%;
+            top: 30%;
+        }
+    </style>
+</head>
+<body>
+    <div id="root" class="container">
+        <div class="toTop"><a name="toTop"></a></div>
+        <div id="top-nav" class="top-nav" style="display: none;">
+            <div class="icon-back"></div>
+            <div class="nav-title">返回书架</div>
+        </div>
+        <div id="fiction_chapter_title"></div>
+        <div id="faction_container" class="m-read-content">
+        </div>
+        <div class="m-button-bar">
+            <ul class="u-tab">
+                <li id="prev_button"><a href="#toTop">上一章</a></li>
+                <li id="next_button"><a href="#toTop">下一章</a></li>
+            </ul>
+        </div>
+        <div id="bottom-nav" class="bottom-nav"  style="display: none;">
+            <ul>
+                <li class="icon-list">
+                    <i class="iconfont icon-mulu"></i>
+                    <p>目录</p>
+                </li>
+                <li class="icon-fonts">
+                    <i class="iconfont icon-icon-yxj-font"></i>
+                    <p>字体</p>
+                </li>
+                <li class="icon-day" data-time-select="">
+                    <i class="iconfont icon-yejian1"></i>
+                    <p>夜间</p>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-pannel-bg font-container" style="display: none;"></div>
+        <div class="nav-pannel font-container" id="font-container" style="display: none;">
+            <div class="child-mod">
+                <span>字号</span>
+                <button id="large-font" class="font-size-button">大</button>
+                <button id="small-font" class="font-size-button">小</button>
+            </div>
+            <div class="child-mod">
+                <span>背景</span>
+                <ul class="bg-color-select">
+                    <li class="bg-container">
+                        <div class="bg-container-current" style="display: none;"></div>
+                    </li>
+                    <li class="bg-container">
+                        <div class="bg-container-current" style="display: none;"></div>
+                    </li>
+                    <li class="bg-container">
+                        <div class="bg-container-current" style="display: none;"></div>
+                    </li>
+                    <li class="bg-container">
+                        <div class="bg-container-current" style="display: none;"></div>
+                    </li>
+                    <li class="bg-container">
+                        <div class="bg-container-current" style="display: none;"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-artical-action">
+            <div class="artical-action-md" id="action_mid"></div>
+        </div>
+    </div>
+<script src="/script/zepto.min.js"></script>
+<script>
+    window.jQuery=$;
+</script>
+<script src="/script/jquery.base64.js"></script>
+<script src="/script/jquery.jsonp.js"></script>
+    <script>
+        (function () {
+            var Util = (function () {
+                //  本地存储
+                var prefix = 'html5_reader_';
+                var StorageGetter = function (key) {
+                    return localStorage.getItem(prefix + key);
+                };
+                var StorageSetter = function (key, val) {
+                    return localStorage.setItem(prefix + key,val);
+                };
+                var getBSONP = function (url, callback) {
+                  return $.jsonp({
+                      url: url,
+                      cache:true,
+                      callback:'duokan_fiction_chapter',
+                      success:function (result) {
+                          var data = $.base64.decode(result);
+                          var json = decodeURIComponent(escape(data));
+                          callback(json);
+                      }
+                  }) ;
+                };
+                return {
+                    getBSONP:getBSONP,
+                    StorageGetter:StorageGetter,
+                    StorageSetter:StorageSetter
+                }
+            }) ();
+            var Dom = {
+                top_nav:$('#top-nav'),
+                bottom_nav:$('.bottom-nav'),
+                font_container:$('.font-container'),
+                icon_day:$('.icon-day'),
+                icon_fonts:$('.icon-fonts'),
+                icon_list:$('.icon-list'),
+                bg_container:$('.bg-container')
+            };
+            var Win = $(window);
+            var Doc = $(document);
+            var RootContainer = $('#faction_container');
+            var readerModel;
+            var readerUI;
+            //  初始化
+            var initFontsize = Util.StorageGetter('font_size');
+            var initBgcColor = Util.StorageGetter('bg_color');
+            var initBgcButton = Util.StorageGetter('bg_color_button');
+            var initIconDay = Util.StorageGetter('day-onOff');
+            initFontsize = parseInt(initFontsize);
+            initBgcButton = parseInt(initBgcButton);
+            if (!initFontsize){
+                initFontsize = 14;
+            }
+            if (!initBgcColor){
+                initBgcColor = '#e9dfc7';
+            }
+            if (!initBgcButton){
+                initBgcButton = 1;
+            }
+            if (!initIconDay){
+                initIconDay = 'day';
+            }
+            if (initIconDay=='day'){
+                Dom.icon_day.find('i').removeClass('icon-rijianmoshi').addClass('icon-yejian1');
+                Dom.icon_day.find('p').text('夜间模式');
+                Dom.bg_container.eq(1).trigger('click');
+                Dom.icon_day.attr('data-time-select','day');
+                Util.StorageSetter('day-onOff','day');
+            }else{
+                Dom.icon_day.find('i').removeClass('icon-yejian1').addClass('icon-rijianmoshi');
+                Dom.icon_day.find('p').text('日间模式');
+                Dom.bg_container.eq(4).trigger('click');
+                Dom.icon_day.attr('data-time-select','night');
+                Util.StorageSetter('day-onOff','night');
+            }
+            RootContainer.css('font-size',initFontsize);
+            RootContainer.css('background',initBgcColor);
+            Dom.bg_container.eq(initBgcButton).find('.bg-container-current').show();
+            function main() {
+                //  整个项目的入口函数
+                readerModel = ReaderModel();
+                readerUI = ReaderBaseFrame(RootContainer);
+                readerModel.init(function (data) {
+                    readerUI(data);
+                });
+                EventHanlder();
+            }
+            function ReaderModel() {
+                //  实现和阅读器相关的数据交互方法
+                var Chapter_id = 0;
+                var ChapterTotal;
+                var init = function (UIcallback) {
+                    getFunctionInfoPromise().then(function (d) {
+                        return getCurChapterContentPromise();
+                    }).then(function (d) {
+                        UIcallback&&UIcallback(d);
+                    });
+                };
+                var getFunctionInfoPromise = function () {
+                       return new Promise(function (resolve,reject) {
+                            $.get('/ajax/chapter',function (data) {
+                                //todo  获得章节信息之后的回调
+                                if (data.result == 0){
+                                    Chapter_id = Util.StorageGetter('last_chapter_id');
+                                    if (Chapter_id){
+                                        Chapter_id = data.chapters[1].chapter_id;
+                                    }
+                                    ChapterTotal = data.chapters.length;
+                                    resolve();
+                                }else{
+                                    reject();
+                                }
+                            },'json');
+                       });
+                };
+                var getCurChapterContent = function () {
+                    $.get('/ajax/chapter_data',{
+                        id:Chapter_id
+                    },function (data) {
+                        if (data.result==0){
+                            var url= data.jsonp;
+                            Util.getBSONP(url,function (data) {
+                                readerUI && readerUI(data);
+                            });
+                        }
+                    },'json');
+                };
+                var getCurChapterContentPromise =function () {
+                    return new Promise(function (resolve, reject) {
+                        $.get('/ajax/chapter_data',{
+                            id:Chapter_id
+                        },function (data) {
+                            if (data.result==0){
+                                var url= data.jsonp;
+                                Util.getBSONP(url,function (data) {
+                                    resolve(data);
+                                });
+                            }else{
+                                reject();
+                            }
+                        },'json');
+                    });
+                };
+                var prevChapter = function (UIcallback) {
+                    Chapter_id = parseInt(Chapter_id,10);
+                    if (Chapter_id==0){
+                        return;
+                    }
+                    Chapter_id -= 1;
+                    getCurChapterContent(Chapter_id,UIcallback);
+                    Util.StorageSetter('last_chapter_id',Chapter_id);
+                };
+                var nextChapter = function (UIcallback) {
+                    Chapter_id = parseInt(Chapter_id,10);
+                    if (Chapter_id==ChapterTotal){
+                        return;
+                    }
+                    Chapter_id += 1;
+                    getCurChapterContent(Chapter_id,UIcallback);
+                    Util.StorageSetter('last_chapter_id',Chapter_id);
+                };
+                return {
+                    init:init,
+                    prevChapter:prevChapter,
+                    nextChapter:nextChapter
+                }
+            }
+            function ReaderBaseFrame(container) {
+                //  渲染基本的UI结构
+                function parseChapterData(jsonData) {
+                    var jsonObj = JSON.parse(jsonData);
+                    var html = '<h4>'+jsonObj.t+'</h4>';
+                    for (var i=0; i<jsonObj.p.length;i++){
+                        html += "<p>"+jsonObj.p[i]+"</p>";
+                    }
+                    return html;
+                }
+                return function (data) {
+                    container.html(parseChapterData(data))
+                };
+            }
+            function EventHanlder() {
+                //  交互的事件绑定
+                //点击屏幕中央显示和隐藏上下导航栏
+                $('#action_mid').click(function () {
+                    if (Dom.top_nav.css('display')=='none'){
+                        Dom.top_nav.show();
+                        Dom.bottom_nav.show();
+                    }else{
+                        Dom.top_nav.hide();
+                        Dom.bottom_nav.hide();
+                        Dom.font_container.hide();
+                        Dom.icon_fonts.find('i').css('color','#ffffff');
+                    }
+                });
+                //  点击字体按钮隐藏和显示背景字体选择栏
+                Dom.icon_fonts.click(function () {
+                    if (Dom.font_container.css('display')=='none'){
+                        Dom.font_container.show();
+                        Dom.icon_fonts.find('i').css('color','#ff7800');
+                    }else{
+                        Dom.font_container.hide();
+                        Dom.icon_fonts.removeClass('icon-fonts-current');
+                        Dom.icon_fonts.find('i').css('color','#ffffff');
+                    }
+                });
+                // 内容背景和字体的切换
+                $('#large-font').click(function () {
+                    if (initFontsize>=20){
+                        return;
+                    }
+                    initFontsize+=1;
+                    RootContainer.css('font-size',initFontsize);
+                    Util.StorageSetter('font_size',initFontsize);
+                    return false;
+                });
+                $('#small-font').click(function () {
+                    if (initFontsize<=12){
+                        return;
+                    }
+                    initFontsize-=1;
+                    RootContainer.css('font-size',initFontsize);
+                    Util.StorageSetter('font_size',initFontsize);
+                    return false;
+                });
+                Dom.bg_container.eq(0).click(function () {
+                    bgcSelect($(this),'#f7eee5');
+                });
+                Dom.bg_container.eq(1).click(function () {
+                    bgcSelect($(this),'#e9dfc7');
+                });
+                Dom.bg_container.eq(2).click(function () {
+                    bgcSelect($(this),'#a4a4a4');
+                });
+                Dom.bg_container.eq(3).click(function () {
+                    bgcSelect($(this),'#cdefce');
+                });
+                Dom.bg_container.eq(4).click(function () {
+                    bgcSelect($(this),'#283548');
+                });
+                function bgcSelect(elem,color) {
+                    Dom.bg_container.find('.bg-container-current').hide();
+                    elem.find('.bg-container-current').show();
+                    RootContainer.css('background',color);
+                    Util.StorageSetter('bg_color',color);
+                    Util.StorageSetter('bg_color_button',elem.index());
+                }
+                //  屏幕滚动隐藏上下导航栏
+                Win.scroll(function () {
+                    Dom.top_nav.hide();
+                    Dom.bottom_nav.hide();
+                    Dom.font_container.hide();
+                    Dom.icon_fonts.find('i').css('color','#ffffff');
+                });
+                //  夜间、日间的切换
+                Dom.icon_day.click(function () {
+                    //todo 内容背景和字体颜色的切换
+                    var This = $(this);
+                    var i= This.find('i');
+                    var p =This.find('p');
+                    var oTime = This.attr('data-time-select');
+                    if (oTime =='day'){
+                        i.removeClass('icon-yejian1').addClass('icon-rijianmoshi');
+                        p.text('日间模式');
+                        Dom.bg_container.eq(4).trigger('click');
+                        This.attr('data-time-select','night');
+                        Util.StorageSetter('day-onOff','night');
+                    }else{
+                        i.removeClass('icon-rijianmoshi').addClass('icon-yejian1');
+                        p.text('夜间模式');
+                        Dom.bg_container.eq(1).trigger('click');
+                        This.attr('data-time-select','day');
+                        Util.StorageSetter('day-onOff','day');
+                    }
+                });
+                //  上下翻页
+                $('#prev_button').click(function () {
+                    readerModel.prevChapter(function (data) {
+                        readerUI(data);
+                    });
+                });
+                $('#next_button').click(function () {
+                    readerModel.nextChapter(function (data) {
+                        readerUI(data);
+                    });
+                });
+            }
+            main();
+        }) ();
+    </script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+{
+    "comment": {
+        "top_comment": [
+            {
+                "status": 0,
+                "author_nick": "940067943",
+                "author": 940067943,
+                "author_icon": "",
+                "comment_count": 1,
+                "object_id": 1400696,
+                "content": "我觉得这本书很好看，希望你可以继续下去，我很期待后面的故事",
+                "rate": 5,
+                "like_count": 2,
+                "create_time": 1442654342,
+                "type": 0,
+                "id": 1716295
+            }
+        ],
+        "top_comment_count": 4,
+        "all_comment_count": 21
+    },
+    "stats": {
+        "paid": 737
+    },
+    "author_books": [
+        {
+            "ad": 0,
+            "word_count": 875317,
+            "owner": 0,
+            "allow_discount": 0,
+            "ad_time": 0,
+            "ad_duration": 0,
+            "free_chapter": false,
+            "score_count": 13,
+            "copyright": "",
+            "title": "重生军嫂改造计划",
+            "new_tags": [
+                "爽文",
+                "高干",
+                "傲娇",
+                "重生",
+                "军婚"
+            ],
+            "on_sale": true,
+            "comment_count": 7,
+            "has_ad": 0,
+            "click": 188735,
+            "latest_id": 421,
+            "score": 7.84,
+            "allow_free_read": 1,
+            "rights_id": 10080,
+            "channel": [
+                2
+            ],
+            "updated": 1508251541,
+            "finish": false,
+            "tags": [
+                "现代言情",
+                "婚恋情缘"
+            ],
+            "price": 5,
+            "chapter_count": 421,
+            "authors": "沈阅",
+            "categories": [
+                {
+                    "category_id": 18000000,
+                    "label": "现代言情"
+                },
+                {
+                    "category_id": 18000200,
+                    "label": "婚恋情缘"
+                }
+            ],
+            "rights": "阅文集团旗下起点女生网",
+            "level": 0,
+            "cover": "http://cover.read.duokan.com/mfsv2/download/fdsc3/p01DBnB05GYK/37Ctisi65yV1FI.jpg",
+            "summary": "军嫂居家日常：随军、带娃、做家务，样样是能手。\r\n祁南：吃吃吃，喝喝喝，买买买！\r\n军嫂遇事日常：忍...",
+            "fiction_id": 363359,
+            "outer_id": "7062784103874203",
+            "latest": "第422章 就打你了"
+        },
+        {
+            "ad": 0,
+            "word_count": 1127032,
+            "owner": 0,
+            "allow_discount": 0,
+            "ad_time": 0,
+            "ad_duration": 0,
+            "free_chapter": false,
+            "score_count": 2,
+            "copyright": "",
+            "title": "田园谷香",
+            "on_sale": true,
+            "comment_count": 1,
+            "has_ad": 0,
+            "click": 66180,
+            "latest_id": 358,
+            "score": 6.0,
+            "allow_free_read": 1,
+            "rights_id": 10080,
+            "channel": [
+                2
+            ],
+            "updated": 1434728087,
+            "finish": true,
+            "tags": [
+                "种田",
+                "古代言情",
+                "布衣种田"
+            ],
+            "price": 5,
+            "chapter_count": 359,
+            "authors": "沈阅",
+            "categories": [
+                {
+                    "category_id": 110000,
+                    "label": "古代言情"
+                },
+                {
+                    "category_id": 110400,
+                    "label": "布衣种田"
+                },
+                {
+                    "category_id": 17000000,
+                    "label": "古代言情"
+                },
+                {
+                    "category_id": 17000600,
+                    "label": "经商种田"
+                }
+            ],
+            "rights": "阅文集团旗下起点女生网",
+            "level": 0,
+            "cover": "http://cover.read.duokan.com/mfsv2/download/s010/p011ZNC66dYe/HldFiX3KpHMa4O.jpg",
+            "summary": "重生农家小萝莉，家长里短是非多。\n家穷势薄遭人欺？不怕！有爹有娘有大哥哩！\n一家齐心好温暖，看咱带着...",
+            "fiction_id": 274315,
+            "outer_id": "5581461750e3a407a315b392",
+            "latest": "番外之惊蛰"
+        },
+        {
+            "ad": 0,
+            "word_count": 327763,
+            "owner": 0,
+            "allow_discount": 0,
+            "ad_time": 0,
+            "ad_duration": 0,
+            "free_chapter": false,
+            "score_count": 0,
+            "copyright": "",
+            "title": "闲妻不淑",
+            "on_sale": true,
+            "comment_count": 0,
+            "has_ad": 0,
+            "click": 18957,
+            "latest_id": 114,
+            "score": 0.0,
+            "allow_free_read": 1,
+            "rights_id": 10080,
+            "channel": [
+                2
+            ],
+            "updated": 1460226320,
+            "finish": true,
+            "tags": [
+                "种田",
+                "古代言情",
+                "布衣种田"
+            ],
+            "price": 5,
+            "chapter_count": 115,
+            "authors": "沈阅",
+            "categories": [
+                {
+                    "category_id": 110000,
+                    "label": "古代言情"
+                },
+                {
+                    "category_id": 110400,
+                    "label": "布衣种田"
+                },
+                {
+                    "category_id": 17000000,
+                    "label": "古代言情"
+                },
+                {
+                    "category_id": 17000600,
+                    "label": "经商种田"
+                }
+            ],
+            "rights": "阅文集团旗下起点女生网",
+            "level": 0,
+            "cover": "http://cover.read.duokan.com/mfsv2/download/s010/p01tmc6TV5uh/QjAX1VNf1LcuBB.jpg",
+            "summary": "一醒来，她就成了大米商的千金，\n一辈子安安然然的做个米虫，挺好\n怎么不说这米业之家早已衰败，糊口尚难...",
+            "fiction_id": 285983,
+            "outer_id": "558140f450e3a4079f15a709",
+            "latest": "第114 归"
+        }
+    ],
+    "item": {
+        "ad": 0,
+        "word_count": 1058817,
+        "owner": 0,
+        "allow_discount": false,
+        "ad_time": 0,
+        "ad_duration": 0,
+        "click": 390665,
+        "free_chapter": false,
+        "score_count": 39,
+        "rights": "阅文集团旗下云起书院",
+        "copyright": "",
+        "title": "异能小农女",
+        "on_sale": true,
+        "comment_count": 21,
+        "has_ad": 0,
+        "id": 1400696,
+        "content": "一朝穿成小农女，无父无母有人欺\n好在老天给力有异能，田里宝藏任我取\n兄弟姐妹排一串，各展所能\n谋个幸福田园乐悠悠",
+        "source": 2,
+        "latest_id": 335,
+        "score": 7.38,
+        "allow_free_read": 1,
+        "toc": [],
+        "rights_id": 10080,
+        "channel": [
+            2
+        ],
+        "updated": 1435987124,
+        "finish": true,
+        "tags": [
+            "架空穿越",
+            "穿越架空",
+            "古代言情",
+            "穿越奇情"
+        ],
+        "started": 1434596321,
+        "price": 5,
+        "chapter_count": 336,
+        "authors": "沈阅",
+        "categories": [
+            {
+                "category_id": 130000,
+                "label": "穿越架空"
+            },
+            {
+                "category_id": 130100,
+                "label": "架空穿越"
+            },
+            {
+                "category_id": 17000000,
+                "label": "古代言情"
+            },
+            {
+                "category_id": 17000400,
+                "label": "穿越奇情"
+            }
+        ],
+        "author_books_total": 5,
+        "level": 0,
+        "created": 1434904019,
+        "cover": "http://cover.read.duokan.com/mfsv2/download/s010/p01OPI9WhghI/opDU5yWd5WonH0.jpg",
+        "summary": "一朝穿成小农女，无父无母有人欺\n好在老天给力有异能，田里宝藏任我取\n兄弟姐妹排一串，各展所能\n谋个幸...",
+        "source_id": 284180,
+        "fiction_id": 284180,
+        "outer_id": "558233e150e3a4738e4c82a5",
+        "latest": "第336章 团圆（大结局）"
+    },
+    "ips": [],
+    "result": 0
+}

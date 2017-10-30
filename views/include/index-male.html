@@ -1,0 +1,31 @@
+<section>
+    <div class="channel-h5__header">
+        <p class="channle-h5__title">
+            男生最爱
+        </p>
+    </div>
+    <div>
+        <ul class="list-h5">
+            <li  class="channel-h5" v-for="(item,index) in male" v-if="index>=0&&index<5" v-bind:data-href="item.fiction_id" v-on:click = "doBook($event)">
+                <div class="book-h5">
+                    <div class="book-h5__cover">
+                         <img alt="{{ item.title }}" v-bind:src="item.cover">
+                        <p class="book-h5__finish">完结</p>
+                    </div>
+                    <div class="book-h5__info">
+                        <p class="book-h5__title">{{ item.title }}</p>
+                        <p class="book-h5__auther">{{ item.authors }}</p>
+                        <p class="book-h5__summary">{{ item.summary }}</p>
+                        <div class="book-h5__warp">
+                            <div class="book-h5__tag" v-for="(tag,index) in item.tags" v-if="index>=0&&index<4">{{ tag }}</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="channel-h5__footer_next">
+        <a href="javascript:">换一换</a>
+        <a href="/male">男生频道&gt;&gt;</a>
+    </div>
+</section>
