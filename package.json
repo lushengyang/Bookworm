@@ -1,18 +1,19 @@
 {
-  "name": "webapp",
+  "name": "Bookworm",
+  "description": "一个手机小说阅读网站",
   "version": "1.0.0",
-  "description": "reader",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "read"
-  ],
-  "author": "lushengyang",
-  "license": "ISC",
+  "private": true,
+  "author": "lushengyang <1758608271@qq.com>",
   "dependencies": {
     "ejs": "^2.5.7",
     "express": "^4.16.2"
-  }
+  },
+  "engines": {
+    "node": "6.11.3"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "main": "index.js",
+  "license": "ISC"
 }
